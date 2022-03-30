@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 25rem;
+  height: 30rem;
+  background-color: #655d8a;
+}
+
+.output {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  height: 4rem;
+  margin: 1.5rem;
+  padding: 1rem;
+  background-color: #6d8299;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.5rem;
+}
+
+.input {
+  display: grid;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.clear {
+  grid-column: span 2;
+  background-color: #1572a1;
+}
+
+.number {
+  background-color: #d885a3;
+}
+
+.operand {
+  background-color: #fdceb9;
+}
+
+/* Make the zero span two columns */
+#zero {
+  grid-column: span 2;
+}
+
+button {
+  font-size: 2em;
+}
