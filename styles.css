@@ -37,20 +37,30 @@ body {
   flex-direction: column;
   border-radius: 8px;
   width: 25rem;
-  height: 30rem;
+  height: auto;
   background-color: #575757;
 }
 
 .output {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
   width: auto;
-  height: 100%;
+  height: 7rem;
   margin: 1.5rem;
   padding: 1rem;
   background-color: #bbd0bf;
   font-family: "Orbitron", sans-serif;
+}
+
+.output-preview {
+  flex: 1 1 25%;
+  min-height: 1rem;
+}
+.output-result {
+  flex: 1 1 75%;
+  min-height: 1.5rem;
   font-size: 1.5rem;
 }
 
@@ -83,4 +93,11 @@ body {
 
 button {
   font-size: 2em;
+  border: 2px solid black;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 1;
 }

@@ -2,7 +2,8 @@ let operations = []; // List of operations
 let current_number = ""; // Current number being typed in
 
 // Elements on the page
-let calculator_output = document.querySelector(".output-result"); // Calculator output element
+let calculatorOutput = document.querySelector(".output-result"); // Calculator output element
+let calculatorOutputPreview = document.querySelector(".output-preview"); // Calculator output element
 let clearButton = document.querySelector(".clear");
 let backspaceButton = document.querySelector(".backspace");
 var numbers = document.querySelectorAll(".number");
@@ -32,7 +33,7 @@ function operate() {
       }
       break;
   }
-  calculator_output.textContent = result;
+  calculatorOutput.textContent = result;
 }
 
 // takes in a string with numerical characters and converts it to a float or integer depending on the input
@@ -42,14 +43,15 @@ function convert(number) {
 
 // Clear the content from the calculator output
 clearButton.onclick = () => {
-  calculator_output.textContent = "";
+  calculatorOutput.textContent = "";
+  calculatorOutputPreview.textContent = "";
   operations = [];
   current_number = "";
 };
 
 backspaceButton.onclick = () => {
-  current_number = calculator_output.textContent.slice(0, -1);
-  calculator_output.textContent = current_number;
+  current_number = calculatorOutput.textContent.slice(0, -1);
+  calculatorOutput.textContent = current_number;
 };
 // Detect events from each number button to append to the current_number string and reflect it in the calculator output
 numbers.forEach((number) => {
@@ -57,10 +59,10 @@ numbers.forEach((number) => {
     let dots = [...current_number].filter((l) => l === ".").length; // Number of dots in the current_number
     if (dots < 1) {
       current_number += number.value; // Append the number pressed to a string (to form large numbers)
-      calculator_output.textContent = current_number; // Update the value of the output number
+      calculatorOutput.textContent = current_number; // Update the value of the output number
     } else if (dots >= 1 && number.value !== ".") {
       current_number += number.value; // Append the number pressed to a string (to form large numbers)
-      calculator_output.textContent = current_number; // Update the value of the output number
+      calculatorOutput.textContent = current_number; // Update the value of the output number
     }
   });
 });
@@ -106,7 +108,8 @@ operands.forEach((operand) => {
     } else if (typeof operations[operations.length - 1] === "string") {
       operations[operations.length - 1] = operand.value;
     }
-    console.log(operations);
+
+    calculatorOutputPreview.textContent = operations.join(" ");
     current_number = "";
   });
 });
