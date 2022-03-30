@@ -38,7 +38,7 @@ body {
   border-radius: 8px;
   width: 25rem;
   height: 30rem;
-  background-color: #655d8a;
+  background-color: #575757;
 }
 
 .output {
@@ -46,10 +46,10 @@ body {
   justify-content: flex-end;
   align-items: center;
   width: auto;
-  height: 4rem;
+  height: 100%;
   margin: 1.5rem;
   padding: 1rem;
-  background-color: #6d8299;
+  background-color: #bbd0bf;
   font-family: "Orbitron", sans-serif;
   font-size: 1.5rem;
 }
@@ -64,15 +64,16 @@ body {
 
 .clear {
   grid-column: span 2;
-  background-color: #1572a1;
 }
 
-.number {
-  background-color: #d885a3;
-}
-
+.clear,
+.number,
 .operand {
-  background-color: #fdceb9;
+  background-color: #ebebeb;
+}
+
+.equal {
+  background-color: #f3a34b;
 }
 
 /* Make the zero span two columns */

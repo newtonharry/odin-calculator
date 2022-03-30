@@ -13,22 +13,22 @@ function operate() {
   switch (operations[1]) {
     case "+":
       operations.splice(0, 3, operations[0] + operations[2]);
-      result = `${operations[0]}`;
+      result = `${operations[0].toFixed(2)}`;
       break;
     case "-":
       operations.splice(0, 3, operations[0] - operations[2]);
-      result = `${operations[0]}`;
+      result = `${operations[0].toFixed(2)}`;
       break;
     case "*":
       operations.splice(0, 3, operations[0] * operations[2]);
-      result = `${operations[0]}`;
+      result = `${operations[0].toFixed(2)}`;
       break;
     case "/":
       if (operations[2] === 0) {
         result = "IMPOSSIBLE!";
       } else {
         operations.splice(0, 3, operations[0] / operations[2]);
-        result = `${operations[0]}`;
+        result = `${operations[0].toFixed(2)}`;
       }
       break;
   }
@@ -54,8 +54,14 @@ backspaceButton.onclick = () => {
 // Detect events from each number button to append to the current_number string and reflect it in the calculator output
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
-    current_number += number.value; // Append the number pressed to a string (to form large numbers)
-    calculator_output.textContent = current_number; // Update the value of the output number
+    let dots = [...current_number].filter((l) => l === ".").length; // Number of dots in the current_number
+    if (dots < 1) {
+      current_number += number.value; // Append the number pressed to a string (to form large numbers)
+      calculator_output.textContent = current_number; // Update the value of the output number
+    } else if (dots >= 1 && number.value !== ".") {
+      current_number += number.value; // Append the number pressed to a string (to form large numbers)
+      calculator_output.textContent = current_number; // Update the value of the output number
+    }
   });
 });
 
@@ -78,7 +84,7 @@ operands.forEach((operand) => {
       // If the operation is an equal sign and the number of operations in the array is 3
       if (operand.value === "=" && operations.length === 3) {
         operate(); // Calculate the operations
-      } else {
+      } else if (operand.value !== "=") {
         operations.push(operand.value); // Push the operand to the operations array
         if (operations.length > 3) {
           // If there are more than 3 operations in the array
@@ -96,6 +102,7 @@ operands.forEach((operand) => {
         operations.push(operand.value);
       }
     }
+    console.log(operations);
     current_number = "";
   });
 });
