@@ -91,6 +91,7 @@ operands.forEach((operand) => {
           operate();
         }
       }
+      // Check if there is just 1 operation in the array which is a number
     } else if (operations.length === 1) {
       if (current_number != "") {
         operations = []; // Empty the operations array (remove the result of the last equal expression)
@@ -101,6 +102,9 @@ operands.forEach((operand) => {
       } else if (operand.value !== "=") {
         operations.push(operand.value);
       }
+      // Check if the last operation was an operand
+    } else if (typeof operations[operations.length - 1] === "string") {
+      operations[operations.length - 1] = operand.value;
     }
     console.log(operations);
     current_number = "";
